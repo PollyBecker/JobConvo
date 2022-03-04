@@ -1,0 +1,55 @@
+<nav class="w-full flex justify-start bg-blue-900 py-3 px-4 fixed z-50">
+    <div class="basis-1/4">
+        <a href="/">
+            <span class="text-amber-600 ml-3 font-medium ">
+                JobConvo
+            </span>
+        </a>
+    </div>
+    {% if user.is_authenticated %}
+    <div class="basis-1/4">
+        <a href="{% url 'sujeito:dashboard' request.user.id %}">
+            <button class="bg-blue-900 hover:bg-slate-50 text-amber-600 rounded-md py-1 px-3">
+                <ion-icon name="finger-print-outline" class="text-amber-600"></ion-icon>
+                Perfil
+            </button>
+        </a>
+    </div>
+    <div class="basis-1/4">
+        <a href="{% url 'sujeito:logout' %}">
+            <button class="bg-blue-900 hover:bg-slate-50 text-amber-600 rounded-md py-1 px-3">
+                <ion-icon name="log-out-outline"class="text-amber-600"></ion-icon>
+                Sair
+            </button>
+        </a>
+    </div>
+    {% else %}
+    <div class="basis-1/4">
+        <a href="{% url 'sujeito:usuario' %}">
+            <button class="bg-blue-900 hover:bg-slate-50 text-amber-600 rounded-md py-1 px-3">
+                <ion-icon name="document-text-outline" class="text-amber-600"></ion-icon>
+                Cadastro
+            </button>
+        </a>
+    </div>
+    <div class="basis-1/4">
+        <a href="{% url 'sujeito:login' %}">
+            <button class="bg-blue-900 hover:bg-slate-50 text-amber-600 rounded-md py-1 px-3">
+                <ion-icon name="arrow-redo-circle-outline" class="text-amber-600"></ion-icon>
+                Login
+            </button>
+        </a>
+    </div>
+    {% endif %}
+    <div class="'basis-1/4">
+        <form method="get" action="#">
+            <input type="text" class="px-1 py-1 rounded-md text-black" name="query" placeholder="Pesquisar Job...">
+            <input type="submit" value="" >
+        </form>
+    </div>
+
+
+
+
+
+</nav>

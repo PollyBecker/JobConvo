@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo%}
+{{object.tilulo}}
+{% endblock %}
+
+{% block content %}
+
+<main class='bg-primary_black min-h-screen w-full'>
+    <header class='bg-primary_black flex justify-start py-10'>
+        <div class="p-10 w-10/12 relative" >
+            <h2 class="font-medium text-4xl font-bold text-white my-1 ">
+                {{object.tilulo}}
+            </h2>
+            <small class="text-white ">
+                <p>Empresa:{{object.contratante}}</p>
+            </small>
+        </div>
+    </header>
+    <section class="h-screen relative bg-no-repeat pb-8 pl-6 flex  items-end bg-cover" >
+        <div>
+            <p class=" w-11/12 md:w-5/12 text-white my-4">
+                <ion-icon name="pencil-outline" class="text-2xl text-amber-600" ></ion-icon>
+                O que buscamos <br> {{object.requisitos}}
+            </p>
+            <p class=" w-11/12 md:w-5/12 text-white my-4">
+                Desejável <br> {{object.escolaridade}}
+            </p>
+            <p class=" w-11/12 md:w-5/12 text-white my-4">
+                Faixa salarial <br> {{object.faixa_salarial}}
+            </p>
+            <div class="flex my-4">
+                <a href="#">
+                    <button class="bg-blue-900 hover:bg-slate-50 text-amber-600 rounded-md py-1 px-3 m-1" >
+                        <ion-icon name="thumbs-up-outline"class="text-2xl text-amber-600" ></ion-icon>
+                        <span class="ml-3 font-medium">
+                            Aplicar
+                        </span>
+                    </button>
+                </a>
+
+                 <a href="#">
+                     <button class="bg-blue-900 hover:bg-slate-50 text-amber-600 rounded-md py-1 px-3 m-1">
+                         <ion-icon name="share-social-outline" class="text-2xl text-amber-600" ></ion-icon>
+                     </button>
+                 </a>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo%}
+Login
+{% endblock %}
+
+{% block content %}
+    <header class='bg-primary_black flex justify-center py-10'style="background-image: url('{% static 'jos.jpg' %}');">
+        <div class="p-20 w-10/12 relative" >
+            <h2 class="text-gray-900 text-2xl text-center font-medium">
+                Nós temos {{ object_list|length }} Jobs para você.
+            </h2>
+            <small class="text-gray-900 text-center">
+                <p>Encontre a vaga perfeita para você!</p>
+            </small>
+        </div>
+    </header>
+    <header class=' flex justify-center py-10'>
+        <div class="p-8 w-10/12 relative" >
+            <h2 class="text-gray-200">
+                <div class="flex flex-wrap items-center min-w-full movie_lis">
+                  {% for job in lista_jobs_recentes %}
+                    <div class="m-2 bg-blue-50 overflow-hidden flex-shrink-0 rounded-md cursor-pointer h-72 w-64">
+
+                            <h1 class="text-center text-4xl font-medium font-bold text-black my-1">{{job.tilulo}}<br></h1>
+                            <h1 class="text-center font-bold text-black">__________________</h1>
+                            <small class="flex grid justify-items-center text-gray-900">{{job.contratante}}</small>
+                            <h3 class=" text-lg text-black my-1">{{job.requisitos|slice:'70'}}...</h3>
+
+                        <div  class="flex grid justify-items-center my-4">
+                            <a href="{% url 'job:detalhe' job.pk %}">
+                                <button class=" w-48 bg-blue-900 hover:bg-slate-50 text-amber-600 rounded-md py-2 px-3">
+                                    Ver Vaga
+                                </button>
+                            </a>
+
+                        </div>
+                    </div>
+
+                  {% endfor %}
+
+                </div>
+
+
+            </h2>
+        </div>
+    </header>
+
+
+
+{% endblock%}
