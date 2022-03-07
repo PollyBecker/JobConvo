@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo%}
+{{object.tilulo}}
+{% endblock %}
+
+{% block content %}
+
+<main class='bg-primary_black min-h-screen w-full'>
+    <header class='bg-primary_black flex justify-start py-32'>
+        <div class="p-5 w-10/12" >
+            <h2 class="font-medium text-4xl font-bold text-white my-1 ">
+                {{object.tilulo}}
+            </h2>
+            <small class="text-white ">
+                <p>Empresa:{{object.contratante}}</p>
+                <p class=" w-11/12 md:w-5/12 text-white my-4">
+                Escolaridade: <br> {{object.escolaridade}}
+            </p>
+            <p class=" w-11/12 md:w-5/12 text-white my-4">
+                Faixa salarial: <br> {{object.faixa_salarial}}
+            </p>
+
+            </small>
+        </div>
+    </header>
+    <section class="bg-no-repeat pb-8 pl-6 flex  items-end bg-cover" >
+          <div class="p-8 w-10/12 relative" >
+            <h2 class="text-gray-200">
+                <div class="flex flex-wrap items-center min-w-full movie_lis">
+                  {% for cada in object.meus_candidatos.all %}
+                    <div class="m-2 bg-blue-50 overflow-hidden flex-shrink-0 rounded-md cursor-pointer h-72 w-full">
+
+                            <h1 class="text-4xl font-medium font-bold text-black my-1">
+                                {{cada.primeiro_nome}} {{cada.ultimo_nome}}<br></h1>
+                            <h1 class="font-bold text-black">__________________</h1>
+                            <small class=" text-gray-900">{{cada.contato}}   </small>
+
+                            <small class=" text-gray-900">{{cada.pretensao_salarial}}   </small>
+
+                            <small class="text-gray-900">{{cada.ultima_escolaridade}}</small>
+
+                            <h3 class=" text-lg text-black my-1">{{cada.experiencia}}</h3>
+
+                            <a href="#">
+                                <button class="w-48 bg-blue-900 hover:bg-slate-50 text-amber-600 rounded-md py-2 px-3 my-2 mp-5">
+                                    <ion-icon name="person-add-outline"class="text-amber-600"></ion-icon>Salvar Candidato
+                                </button>
+                            </a>
+
+                                <a href="#">
+                                <button class=" w-48 bg-blue-900 hover:bg-slate-50 text-amber-600 rounded-md py-2 px-3">
+                                    <ion-icon name="at-outline" class="text-amber-600"></ion-icon>
+                                    Enviar E-mail
+                                </button>
+                            </a>
+                    </div>
+
+                  {% endfor %}
+
+                </div>
+
+
+            </h2>
+        </div>
+
+    </section>
+</main>
+{% endblock %}

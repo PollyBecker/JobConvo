@@ -16,6 +16,14 @@
         </a>
     </div>
     <div class="basis-1/4">
+        <a href="{% url 'sujeito:criarjob' request.user.id %}">
+            <button class="bg-blue-900 hover:bg-slate-50 text-amber-600 rounded-md py-1 px-3">
+                <ion-icon name="finger-print-outline" class="text-amber-600"></ion-icon>
+                +Job
+            </button>
+        </a>
+    </div>
+    <div class="basis-1/4">
         <a href="{% url 'sujeito:logout' %}">
             <button class="bg-blue-900 hover:bg-slate-50 text-amber-600 rounded-md py-1 px-3">
                 <ion-icon name="log-out-outline"class="text-amber-600"></ion-icon>

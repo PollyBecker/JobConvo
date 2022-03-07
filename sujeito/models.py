@@ -1,6 +1,11 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import AbstractUser
+
+
+
+
+
 # Create your models here.
 
 
@@ -29,27 +34,26 @@ PORTE=[('Ate 9 empregados','Ate 9 empregados'),
 
 ]
 class Usuario(AbstractUser):
-    ...
+    is_empresa = models.BooleanField('empresa status', default=False)
+    is_candidato = models.BooleanField('candidato status', default=False)
 
 
 class Empresa(Usuario):
-    nome=models.CharField(max_length=100)
+    nome_empresa=models.CharField(max_length=100)
     vagas_criadas = models.IntegerField(default=0)
     cnpj =models.IntegerField()
-    porte= models.CharField(max_length=100, choices=PORTE)
     data_cadastro = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return self.nome
+        return self.nome_empresa
 
 
 class Candidato(Usuario):
-    # vaga = models.ForeignKey("Job", related_name="meus_candidatos", on_delete=models.CASCADE)
     nome_candidato= models.CharField(max_length=100)
-    pretensao_salarial = models.CharField(max_length=20, choices=FAIXA_SALARIAL)
-    experiencia=models.TextField(max_length=500)
-    ultima_escolaridade= models.CharField(max_length=20, choices=ESCOLARIDADE)
     data_cadastro = models.DateTimeField(default=timezone.now)
+
 
     def __str__(self):
         return self.nome_candidato
+
+

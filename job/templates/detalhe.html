@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block titulo%}
 {{object.tilulo}}
@@ -18,7 +19,7 @@
             </small>
         </div>
     </header>
-    <section class="h-screen relative bg-no-repeat pb-8 pl-6 flex  items-end bg-cover" >
+    <section class="bg-no-repeat pb-8 pl-6 flex  items-end bg-cover" >
         <div>
             <p class=" w-11/12 md:w-5/12 text-white my-4">
                 <ion-icon name="pencil-outline" class="text-2xl text-amber-600" ></ion-icon>
@@ -30,22 +31,15 @@
             <p class=" w-11/12 md:w-5/12 text-white my-4">
                 Faixa salarial <br> {{object.faixa_salarial}}
             </p>
-            <div class="flex my-4">
-                <a href="#">
-                    <button class="bg-blue-900 hover:bg-slate-50 text-amber-600 rounded-md py-1 px-3 m-1" >
-                        <ion-icon name="thumbs-up-outline"class="text-2xl text-amber-600" ></ion-icon>
-                        <span class="ml-3 font-medium">
-                            Aplicar
-                        </span>
-                    </button>
-                </a>
-
-                 <a href="#">
-                     <button class="bg-blue-900 hover:bg-slate-50 text-amber-600 rounded-md py-1 px-3 m-1">
-                         <ion-icon name="share-social-outline" class="text-2xl text-amber-600" ></ion-icon>
-                     </button>
-                 </a>
-            </div>
+            <div class=" h-full text-gray-100 text-center flex items-center flex-col">
+            <form method="post">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Gostaria de se Aplicar?</legend>
+                    {{ form|crispy }}
+                </fieldset>
+                <button class="bg-blue-900 hover:bg-slate-50 text-amber-600 rounded-md py-1 px-3" type="submit">Cadastrar</button>
+            </form>
         </div>
     </section>
 </main>
